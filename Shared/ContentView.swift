@@ -8,40 +8,66 @@
 import SwiftUI
 import CoreData
 
+///左侧菜单及调用
 struct ContentView: View {
+    func calColumnWidths() -> [CGFloat] {
+        let adjust_width = CGFloat(5)
+        
+        let width_screen = max(UIScreen.main.bounds.size.width, UIScreen.main.bounds.size.height)
+        let width = (width_screen - 16) / CGFloat(headerWords.count) // 间距1
+        
+        let adjust_width2 = adjust_width * 12 / 3
+        
+        let width_headers: [CGFloat] = [width, width - adjust_width, width - adjust_width, width - adjust_width, width - adjust_width, width + adjust_width2, width + adjust_width2, width + adjust_width2, width, width - adjust_width, width - adjust_width, width - adjust_width, width - adjust_width, width - adjust_width, width - adjust_width, width - adjust_width, width - adjust_width, width - adjust_width]
+        
+        return width_headers
+        
+    }
+    
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         animation: .default)
     private var items: FetchedResults<Item>
-
+    
+    private var items_menu: [String] = ["Players", "New Game", "Share", "Voice Training"]
+    
+    var liveDatas = LiveData.createData()
+    
+    //MARK: - 状态及绑定
+    @State private var plus_minus: Int = 1
+    
     var body: some View {
         NavigationView {
             List {
-                ForEach(items) { item in
+                ForEach(items_menu.indices, id: \.self) { index in
                     NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+                        switch index {
+                        case 0 :
+                            Text("Item at \(items_menu[index])")
+                            
+                        case 1 :
+                            MainTracker(plus_minus: $plus_minus)
+                            
+                        default :
+                            PlayerLiveDataTable(plus_minus: plus_minus)
+                        }
+                        
                     } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
+                        Text(items_menu[index])
                     }
                 }
-                .onDelete(perform: deleteItems)
+//                .onDelete(perform: deleteItems)
             }
-            .toolbar {
-#if os(iOS)
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-#endif
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
+            .navigationTitle(Text("Game Tracker"))
+            
+            
+            VStack {
+                MainTracker(plus_minus: $plus_minus)
             }
-            Text("Select an item")
         }
+        
     }
 
     private func addItem() {

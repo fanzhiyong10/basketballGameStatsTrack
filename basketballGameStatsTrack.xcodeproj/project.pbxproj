@@ -21,6 +21,22 @@
 		66086E5B291DAFAD000FADC3 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66086E2D291DAFAB000FADC3 /* Persistence.swift */; };
 		66086E5C291DAFAD000FADC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66086E2E291DAFAD000FADC3 /* Assets.xcassets */; };
 		66086E5D291DAFAD000FADC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66086E2E291DAFAD000FADC3 /* Assets.xcassets */; };
+		66086E70291DC793000FADC3 /* MainTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66086E6F291DC793000FADC3 /* MainTracker.swift */; };
+		66086E74291E4C7A000FADC3 /* TeamInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66086E71291E4C7A000FADC3 /* TeamInfo.swift */; };
+		66086E75291E4C7A000FADC3 /* ShareStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66086E72291E4C7A000FADC3 /* ShareStep.swift */; };
+		66086E76291E4C7A000FADC3 /* LiveData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66086E73291E4C7A000FADC3 /* LiveData.swift */; };
+		66086E78291E7822000FADC3 /* PlayerLiveDataRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66086E77291E7822000FADC3 /* PlayerLiveDataRow.swift */; };
+		66086E7A291E8710000FADC3 /* PlayerLiveDataHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66086E79291E8710000FADC3 /* PlayerLiveDataHeader.swift */; };
+		66086E7C291E95DA000FADC3 /* PlayerLiveDataFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66086E7B291E95DA000FADC3 /* PlayerLiveDataFooter.swift */; };
+		66086E7E291E96B2000FADC3 /* PlayerLiveDataTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66086E7D291E96B2000FADC3 /* PlayerLiveDataTable.swift */; };
+		662F35452920A0A1005130A0 /* PlusMinusButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662F35442920A0A1005130A0 /* PlusMinusButtonGroup.swift */; };
+		662F35472920C5D3005130A0 /* GameClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662F35462920C5D3005130A0 /* GameClockView.swift */; };
+		662F354A2920D1F7005130A0 /* TeamPeriodScoreTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662F35492920D1F7005130A0 /* TeamPeriodScoreTable.swift */; };
+		662F354C2920D245005130A0 /* TeamPeriodScoreRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662F354B2920D245005130A0 /* TeamPeriodScoreRow.swift */; };
+		662F354E2920DFFC005130A0 /* TeamPeriodScoreHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662F354D2920DFFC005130A0 /* TeamPeriodScoreHeader.swift */; };
+		662F355029211400005130A0 /* OpponentScoreStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662F354F29211400005130A0 /* OpponentScoreStepper.swift */; };
+		662F355229213F06005130A0 /* PlusMinusToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662F355129213F06005130A0 /* PlusMinusToggle.swift */; };
+		66ECD6EC291FC2C200719DCF /* TopAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66ECD6EB291FC2C200719DCF /* TopAreaView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +71,23 @@
 		66086E4C291DAFAD000FADC3 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		66086E50291DAFAD000FADC3 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		66086E52291DAFAD000FADC3 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
+		66086E6F291DC793000FADC3 /* MainTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTracker.swift; sourceTree = "<group>"; };
+		66086E71291E4C7A000FADC3 /* TeamInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamInfo.swift; sourceTree = "<group>"; };
+		66086E72291E4C7A000FADC3 /* ShareStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareStep.swift; sourceTree = "<group>"; };
+		66086E73291E4C7A000FADC3 /* LiveData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveData.swift; sourceTree = "<group>"; };
+		66086E77291E7822000FADC3 /* PlayerLiveDataRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerLiveDataRow.swift; sourceTree = "<group>"; };
+		66086E79291E8710000FADC3 /* PlayerLiveDataHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerLiveDataHeader.swift; sourceTree = "<group>"; };
+		66086E7B291E95DA000FADC3 /* PlayerLiveDataFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerLiveDataFooter.swift; sourceTree = "<group>"; };
+		66086E7D291E96B2000FADC3 /* PlayerLiveDataTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerLiveDataTable.swift; sourceTree = "<group>"; };
+		662F35442920A0A1005130A0 /* PlusMinusButtonGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusMinusButtonGroup.swift; sourceTree = "<group>"; };
+		662F35462920C5D3005130A0 /* GameClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameClockView.swift; sourceTree = "<group>"; };
+		662F35492920D1F7005130A0 /* TeamPeriodScoreTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamPeriodScoreTable.swift; sourceTree = "<group>"; };
+		662F354B2920D245005130A0 /* TeamPeriodScoreRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamPeriodScoreRow.swift; sourceTree = "<group>"; };
+		662F354D2920DFFC005130A0 /* TeamPeriodScoreHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamPeriodScoreHeader.swift; sourceTree = "<group>"; };
+		662F354F29211400005130A0 /* OpponentScoreStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpponentScoreStepper.swift; sourceTree = "<group>"; };
+		662F355129213F06005130A0 /* PlusMinusToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusMinusToggle.swift; sourceTree = "<group>"; };
+		66ECD6EB291FC2C200719DCF /* TopAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopAreaView.swift; sourceTree = "<group>"; };
+		66ECD6ED291FD45400719DCF /* basketballGameStatsTrack--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "basketballGameStatsTrack--iOS--Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +125,7 @@
 		66086E23291DAFAB000FADC3 = {
 			isa = PBXGroup;
 			children = (
+				66ECD6ED291FD45400719DCF /* basketballGameStatsTrack--iOS--Info.plist */,
 				66086E28291DAFAB000FADC3 /* Shared */,
 				66086E3A291DAFAD000FADC3 /* macOS */,
 				66086E43291DAFAD000FADC3 /* Tests iOS */,
@@ -103,6 +137,9 @@
 		66086E28291DAFAB000FADC3 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				66086E6E291DB759000FADC3 /* resource */,
+				66086E6D291DB749000FADC3 /* model */,
+				66086E6C291DB735000FADC3 /* view */,
 				66086E2B291DAFAB000FADC3 /* basketballGameStatsTrackApp.swift */,
 				66086E2C291DAFAB000FADC3 /* ContentView.swift */,
 				66086E2D291DAFAB000FADC3 /* Persistence.swift */,
@@ -147,6 +184,67 @@
 				66086E52291DAFAD000FADC3 /* Tests_macOSLaunchTests.swift */,
 			);
 			path = "Tests macOS";
+			sourceTree = "<group>";
+		};
+		66086E6C291DB735000FADC3 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				662F35482920D0B7005130A0 /* teamTable */,
+				66ECD6EA291FC24700719DCF /* table */,
+				66086E6F291DC793000FADC3 /* MainTracker.swift */,
+				662F35432920A045005130A0 /* TopArea */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		66086E6D291DB749000FADC3 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				66086E73291E4C7A000FADC3 /* LiveData.swift */,
+				66086E72291E4C7A000FADC3 /* ShareStep.swift */,
+				66086E71291E4C7A000FADC3 /* TeamInfo.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		66086E6E291DB759000FADC3 /* resource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = resource;
+			sourceTree = "<group>";
+		};
+		662F35432920A045005130A0 /* TopArea */ = {
+			isa = PBXGroup;
+			children = (
+				66ECD6EB291FC2C200719DCF /* TopAreaView.swift */,
+				662F35462920C5D3005130A0 /* GameClockView.swift */,
+				662F35442920A0A1005130A0 /* PlusMinusButtonGroup.swift */,
+				662F355129213F06005130A0 /* PlusMinusToggle.swift */,
+			);
+			path = TopArea;
+			sourceTree = "<group>";
+		};
+		662F35482920D0B7005130A0 /* teamTable */ = {
+			isa = PBXGroup;
+			children = (
+				662F35492920D1F7005130A0 /* TeamPeriodScoreTable.swift */,
+				662F354B2920D245005130A0 /* TeamPeriodScoreRow.swift */,
+				662F354D2920DFFC005130A0 /* TeamPeriodScoreHeader.swift */,
+				662F354F29211400005130A0 /* OpponentScoreStepper.swift */,
+			);
+			path = teamTable;
+			sourceTree = "<group>";
+		};
+		66ECD6EA291FC24700719DCF /* table */ = {
+			isa = PBXGroup;
+			children = (
+				66086E77291E7822000FADC3 /* PlayerLiveDataRow.swift */,
+				66086E7B291E95DA000FADC3 /* PlayerLiveDataFooter.swift */,
+				66086E79291E8710000FADC3 /* PlayerLiveDataHeader.swift */,
+				66086E7D291E96B2000FADC3 /* PlayerLiveDataTable.swift */,
+			);
+			path = table;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,10 +405,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				662F35452920A0A1005130A0 /* PlusMinusButtonGroup.swift in Sources */,
+				662F35472920C5D3005130A0 /* GameClockView.swift in Sources */,
+				662F355229213F06005130A0 /* PlusMinusToggle.swift in Sources */,
+				66086E78291E7822000FADC3 /* PlayerLiveDataRow.swift in Sources */,
+				662F354A2920D1F7005130A0 /* TeamPeriodScoreTable.swift in Sources */,
 				66086E56291DAFAD000FADC3 /* basketballGameStatsTrackApp.swift in Sources */,
 				66086E5A291DAFAD000FADC3 /* Persistence.swift in Sources */,
+				66086E7E291E96B2000FADC3 /* PlayerLiveDataTable.swift in Sources */,
+				66ECD6EC291FC2C200719DCF /* TopAreaView.swift in Sources */,
+				662F354C2920D245005130A0 /* TeamPeriodScoreRow.swift in Sources */,
+				66086E7A291E8710000FADC3 /* PlayerLiveDataHeader.swift in Sources */,
+				66086E74291E4C7A000FADC3 /* TeamInfo.swift in Sources */,
+				662F354E2920DFFC005130A0 /* TeamPeriodScoreHeader.swift in Sources */,
+				66086E76291E4C7A000FADC3 /* LiveData.swift in Sources */,
 				66086E54291DAFAD000FADC3 /* basketballGameStatsTrack.xcdatamodeld in Sources */,
+				66086E75291E4C7A000FADC3 /* ShareStep.swift in Sources */,
+				66086E70291DC793000FADC3 /* MainTracker.swift in Sources */,
 				66086E58291DAFAD000FADC3 /* ContentView.swift in Sources */,
+				662F355029211400005130A0 /* OpponentScoreStepper.swift in Sources */,
+				66086E7C291E95DA000FADC3 /* PlayerLiveDataFooter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,10 +592,12 @@
 				DEVELOPMENT_TEAM = 26C2NZDPQR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "basketballGameStatsTrack--iOS--Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -494,7 +610,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -508,10 +624,12 @@
 				DEVELOPMENT_TEAM = 26C2NZDPQR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "basketballGameStatsTrack--iOS--Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -524,7 +642,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
