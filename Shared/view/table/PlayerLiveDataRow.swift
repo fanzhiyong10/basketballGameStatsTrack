@@ -76,9 +76,9 @@ struct PlayerLiveDataRow: View {
                             .foregroundColor(.green)
                             .onTapGesture {
                                 print("+")
-                                if self.liveData.ft_make_count > 0 {
-                                    self.liveData.ft_make_count += self.plusMinus.value
-                                }
+                                // 算法：最小为0
+                                let result = self.liveData.ft_make_count + self.plusMinus.value
+                                self.liveData.ft_make_count = result >= 0 ? result : 0
                             }
                     }
                     .overlay(alignment: .topLeading) {
@@ -95,9 +95,8 @@ struct PlayerLiveDataRow: View {
                             .foregroundColor(.red)
                             .onTapGesture {
                                 print("-")
-                                if self.liveData.ft_miss_count > 0 {
-                                    self.liveData.ft_miss_count += self.plusMinus.value
-                                }
+                                let result = self.liveData.ft_miss_count + self.plusMinus.value
+                                self.liveData.ft_miss_count = result >= 0 ? result : 0
                             }
                     }
 
@@ -122,9 +121,8 @@ struct PlayerLiveDataRow: View {
                             .foregroundColor(.green)
                             .onTapGesture {
                                 print("+")
-                                if self.liveData.fg2_make_count > 0 {
-                                    self.liveData.fg2_make_count += self.plusMinus.value
-                                }
+                                let result = self.liveData.fg2_make_count + self.plusMinus.value
+                                self.liveData.fg2_make_count = result >= 0 ? result : 0
                             }
 
                     }
@@ -140,9 +138,8 @@ struct PlayerLiveDataRow: View {
                             .foregroundColor(.red)
                             .onTapGesture {
                                 print("-")
-                                if self.liveData.fg2_miss_count > 0 {
-                                    self.liveData.fg2_miss_count += self.plusMinus.value
-                                }
+                                let result = self.liveData.fg2_miss_count + self.plusMinus.value
+                                self.liveData.fg2_miss_count = result >= 0 ? result : 0
                             }
                     }
 
@@ -167,9 +164,8 @@ struct PlayerLiveDataRow: View {
                             .foregroundColor(.green)
                             .onTapGesture {
                                 print("+")
-                                if self.liveData.fg3_make_count > 0 {
-                                    self.liveData.fg3_make_count += self.plusMinus.value
-                                }
+                                let result = self.liveData.fg3_make_count + self.plusMinus.value
+                                self.liveData.fg3_make_count = result >= 0 ? result : 0
                             }
                     }
                     .overlay(alignment: .topLeading) {
@@ -185,9 +181,8 @@ struct PlayerLiveDataRow: View {
                             .foregroundColor(.red)
                             .onTapGesture {
                                 print("-")
-                                if self.liveData.fg3_miss_count > 0 {
-                                    self.liveData.fg3_miss_count += self.plusMinus.value
-                                }
+                                let result = self.liveData.fg3_miss_count + self.plusMinus.value
+                                self.liveData.fg3_miss_count = result >= 0 ? result : 0
                             }
                     }
             }
@@ -207,9 +202,8 @@ struct PlayerLiveDataRow: View {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
                     }
                     .onTapGesture {
-                        if self.liveData.assts_count > 0 {
-                            self.liveData.assts_count += self.plusMinus.value
-                        }
+                        let result = self.liveData.assts_count + self.plusMinus.value
+                        self.liveData.assts_count = result >= 0 ? result : 0
                     }
 
                 Text(liveData.orebs)
@@ -218,9 +212,8 @@ struct PlayerLiveDataRow: View {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
                     }
                     .onTapGesture {
-                        if self.liveData.orebs_count > 0 {
-                            self.liveData.orebs_count += self.plusMinus.value
-                        }
+                        let result = self.liveData.orebs_count + self.plusMinus.value
+                        self.liveData.orebs_count = result >= 0 ? result : 0
                     }
 
                 Text(liveData.drebs)
@@ -229,9 +222,8 @@ struct PlayerLiveDataRow: View {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
                     }
                     .onTapGesture {
-                        if self.liveData.drebs_count > 0 {
-                            self.liveData.drebs_count += self.plusMinus.value
-                        }
+                        let result = self.liveData.drebs_count + self.plusMinus.value
+                        self.liveData.drebs_count = result >= 0 ? result : 0
                     }
 
                 Text(liveData.steals)
@@ -240,9 +232,8 @@ struct PlayerLiveDataRow: View {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
                     }
                     .onTapGesture {
-                        if self.liveData.steals_count > 0 {
-                            self.liveData.steals_count += self.plusMinus.value
-                        }
+                        let result = self.liveData.steals_count + self.plusMinus.value
+                        self.liveData.steals_count = result >= 0 ? result : 0
                     }
 
                 Text(liveData.blocks)
@@ -251,9 +242,8 @@ struct PlayerLiveDataRow: View {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
                     }
                     .onTapGesture {
-                        if self.liveData.blocks_count > 0 {
-                            self.liveData.blocks_count += self.plusMinus.value
-                        }
+                        let result = self.liveData.blocks_count + self.plusMinus.value
+                        self.liveData.blocks_count = result >= 0 ? result : 0
                     }
 
                 Text(liveData.ties)
@@ -262,9 +252,8 @@ struct PlayerLiveDataRow: View {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
                     }
                     .onTapGesture {
-                        if self.liveData.ties_count > 0 {
-                            self.liveData.ties_count += self.plusMinus.value
-                        }
+                        let result = self.liveData.ties_count + self.plusMinus.value
+                        self.liveData.ties_count = result >= 0 ? result : 0
                     }
 
                 Text(liveData.defs)
@@ -273,9 +262,8 @@ struct PlayerLiveDataRow: View {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
                     }
                     .onTapGesture {
-                        if self.liveData.defs_count > 0 {
-                            self.liveData.defs_count += self.plusMinus.value
-                        }
+                        let result = self.liveData.defs_count + self.plusMinus.value
+                        self.liveData.defs_count = result >= 0 ? result : 0
                     }
 
                 Text(liveData.charges)
@@ -284,17 +272,15 @@ struct PlayerLiveDataRow: View {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
                     }
                     .onTapGesture {
-                        if self.liveData.charges_count > 0 {
-                            self.liveData.charges_count += self.plusMinus.value
-                        }
+                        let result = self.liveData.charges_count + self.plusMinus.value
+                        self.liveData.charges_count = result >= 0 ? result : 0
                     }
 
                 Text(liveData.tos)
                     .frame(width: columnWidths[17], alignment: .center)
                     .onTapGesture {
-                        if self.liveData.tos_count > 0 {
-                            self.liveData.tos_count += self.plusMinus.value
-                        }
+                        let result = self.liveData.tos_count + self.plusMinus.value
+                        self.liveData.tos_count = result >= 0 ? result : 0
                     }
             }
             
@@ -308,6 +294,7 @@ struct PlayerLiveDataRow_Previews: PreviewProvider {
     static var previews: some View {
         // 绑定Binding，使用.constant(LiveData.createTestData())
         PlayerLiveDataRow(liveData: .constant(LiveData.createTestData()))
+            .environmentObject(PlusMinus())
             .previewInterfaceOrientation(.landscapeRight)
     }
 }

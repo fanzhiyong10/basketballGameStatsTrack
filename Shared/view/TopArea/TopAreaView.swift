@@ -9,6 +9,7 @@ import SwiftUI
 
 ///全局变量
 class PlusMinus: ObservableObject {
+    // PlusMinus，缺省为+1，true
     @Published var isOn = true
     
     var value: Int {
@@ -20,13 +21,16 @@ class PlusMinus: ObservableObject {
             return -1
         }
     }
+    
+    // 声控，缺省为false
+    @Published var isOnVoiceControl = false
 }
 
 struct TopAreaView: View {
     
-    //MARK: - 状态
-    @State private var isOnVoiceControl = false
-    
+    //MARK: - 全局环境变量 PlusMinus
+    @EnvironmentObject var plusMinus: PlusMinus
+
     var body: some View {
         HStack(alignment: .top, spacing: 12) {
             Image(systemName: "mic.circle.fill")
@@ -34,10 +38,10 @@ struct TopAreaView: View {
                 .padding(.leading, 12)
                 .padding(.top, 55)
                 .frame(width: 72, height: 115, alignment: .center)
-                .foregroundColor(self.isOnVoiceControl ? .green : .gray)
+                .foregroundColor(self.plusMinus.isOnVoiceControl ? .green : .gray)
                 .onTapGesture {
                     print("mic.circle.fill")
-                    self.isOnVoiceControl.toggle()
+                    self.plusMinus.isOnVoiceControl.toggle()
                 }
             
             VStack(alignment: .center, spacing: 20) {
@@ -73,6 +77,7 @@ struct TopAreaView: View {
 struct TopAreaView_Previews: PreviewProvider {
     static var previews: some View {
         TopAreaView()
+            .environmentObject(PlusMinus())
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }

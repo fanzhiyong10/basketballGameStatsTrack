@@ -31,6 +31,7 @@ struct PlusMinusToggle: View {
 struct PlusMinusToggle_Previews: PreviewProvider {
     static var previews: some View {
         PlusMinusToggle()
+            .environmentObject(PlusMinus())
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }

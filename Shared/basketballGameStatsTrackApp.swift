@@ -17,6 +17,7 @@ struct basketballGameStatsTrackApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(plusMinus)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
