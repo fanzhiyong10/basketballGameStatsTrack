@@ -27,7 +27,7 @@ struct GameClockView: View {
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
-        ZStack(alignment: .top) {
+
             VStack(alignment: .center, spacing: 10) {
                 Text("\(calGameClock())")
                     .frame(width: 350)
@@ -43,6 +43,7 @@ struct GameClockView: View {
                     }
                 
                 HStack(alignment: .center) {
+                    
                     // 对齐：左侧
                     if started == false {
                         Button(action: {
@@ -56,13 +57,7 @@ struct GameClockView: View {
                                 .foregroundColor(.white)
                                 .cornerRadius(25)
                         }
-                    }
-                    
-                    // 对齐
-                    Spacer()
-                    
-                    // 对齐：右侧
-                    if started == true {
+                    } else {
                         Button(action: {
                             print("Stop")
                             // 停止
@@ -76,18 +71,32 @@ struct GameClockView: View {
                                 .cornerRadius(25)
                         }
                     }
+                    
+                    // 对齐
+                    Spacer()
+                    
+                    // 对齐：右侧
+                    Image(systemName: "plus.magnifyingglass")
+                        .font(.system(size: 50))
+                        .onTapGesture {
+                            print("plus.magnifyingglass")
+                        }
+                    
+                    Spacer()
+                    
+                    Text("PLAYERS")
+                        .frame(width: 120, height: 40, alignment: .center)
+                        .font(.title2)
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                    
+
                 }
-                .frame(width: 300.0)
+                .frame(width: 350.0)
                 
             }
-            
-            Image(systemName: "plus.magnifyingglass")
-                .font(.system(size: 60))
-                .padding(.top, 50.0)
-                .onTapGesture {
-                    print("plus.magnifyingglass")
-                }
-        }
+        
         
     }
     

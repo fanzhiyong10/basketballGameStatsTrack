@@ -21,10 +21,10 @@ struct OpponentScoreStepper: View {
                 .border(.green, width: 2)
             
             Stepper("", value: $stepAmount, in: 0...200, step: 1)
-                .frame(width: 90, height: 40, alignment: .center)
+                .frame(width: 85, height: 40, alignment: .center)
                 
         }
-        .frame(width: 120, height: 120, alignment: .center)
+        .frame(width: 90, height: 120, alignment: .center)
     }
 }
 

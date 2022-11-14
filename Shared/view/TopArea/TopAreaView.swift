@@ -32,7 +32,7 @@ struct TopAreaView: View {
     @EnvironmentObject var plusMinus: PlusMinus
 
     var body: some View {
-        HStack(alignment: .top, spacing: 12) {
+        HStack(alignment: .top, spacing: 20) {
             Image(systemName: "mic.circle.fill")
                 .resizable()
                 .padding(.leading, 12)
@@ -44,13 +44,19 @@ struct TopAreaView: View {
                     self.plusMinus.isOnVoiceControl.toggle()
                 }
             
-            VStack(alignment: .center, spacing: 20) {
+            VStack(alignment: .leading, spacing: 6) {
+                PlusMinusToggle()
+                
                 Text("\"Ben Make\"")
                     .font(.title)
                     .foregroundColor(.green)
-                    .padding(.top, 12)
                 
-                PlusMinusToggle()
+                Text("Manual Command")
+                    .font(.title3)
+                    .foregroundColor(.blue)
+                    .onTapGesture {
+                        print("Manual Command")
+                    }
             }
             
             Spacer()
@@ -65,6 +71,7 @@ struct TopAreaView: View {
             
             OpponentScoreStepper()
                 .padding(.top, 8)
+                .padding(.trailing, 20)
         }
     }
     

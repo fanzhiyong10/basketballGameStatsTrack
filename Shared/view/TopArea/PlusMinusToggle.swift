@@ -16,6 +16,9 @@ struct PlusMinusToggle: View {
             Toggle(isOn: $plusMinus.isOn) {
                 Text("-")
                     .font(.largeTitle)
+                    .onTapGesture {
+                        plusMinus.isOn = false
+                    }
             }
                 .toggleStyle(.switch)
             
@@ -23,6 +26,9 @@ struct PlusMinusToggle: View {
             
             Text("+")
                 .font(.largeTitle)
+                .onTapGesture {
+                    plusMinus.isOn = true
+                }
         }
         .frame(width: 100, height: 50)
     }
