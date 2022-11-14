@@ -7,9 +7,25 @@
 
 import SwiftUI
 
+///全局变量
+class PlusMinus: ObservableObject {
+    @Published var isOn = true
+    
+    var value: Int {
+        if isOn {
+            print("isOn == true")
+            return 1
+        } else {
+            print("isOn == false")
+            return -1
+        }
+    }
+}
+
 struct TopAreaView: View {
-    //MARK: - 绑定
-    @Binding var plus_minus: Int
+    
+    //MARK: - 状态
+    @State private var isOnVoiceControl = false
     
     var body: some View {
         HStack(alignment: .top, spacing: 12) {
@@ -18,9 +34,10 @@ struct TopAreaView: View {
                 .padding(.leading, 12)
                 .padding(.top, 55)
                 .frame(width: 72, height: 115, alignment: .center)
-                .foregroundColor(.gray)
+                .foregroundColor(self.isOnVoiceControl ? .green : .gray)
                 .onTapGesture {
                     print("mic.circle.fill")
+                    self.isOnVoiceControl.toggle()
                 }
             
             VStack(alignment: .center, spacing: 20) {
@@ -29,7 +46,6 @@ struct TopAreaView: View {
                     .foregroundColor(.green)
                     .padding(.top, 12)
                 
-//                PlusMinusButtonGroup(plus_minus: $plus_minus)
                 PlusMinusToggle()
             }
             
@@ -37,31 +53,26 @@ struct TopAreaView: View {
             
             GameClockView()
                 .padding(.top, 8)
-//                .padding(.leading, 20)
 
             Spacer()
             
             TeamPeriodScoreTable()
                 .frame(width: 500, height: 120, alignment: .topLeading)
-//                .padding(.leading, 20)
-//                .ignoresSafeArea()
             
             OpponentScoreStepper()
                 .padding(.top, 8)
         }
-        
-//        .ignoresSafeArea()
     }
     
     private func toPlus() {
         print("plus_minus = 1")
-        self.plus_minus = 1
+//        self.plus_minus = 1
     }
 }
 
 struct TopAreaView_Previews: PreviewProvider {
     static var previews: some View {
-        TopAreaView(plus_minus: .constant(1))
+        TopAreaView()
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }

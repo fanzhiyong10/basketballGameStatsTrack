@@ -14,7 +14,6 @@ struct TeamPeriodScoreTable: View {
             List {
                 Section {
                     ForEach(0...liveDatas.count-1, id:\.self) { index in
-                        
                         TeamPeriodScoreRow(teamPeriodScores: liveDatas[index])
                             .frame(height: 35) // 行高
                             .listRowSeparator(.hidden) // 行分割线：隐藏

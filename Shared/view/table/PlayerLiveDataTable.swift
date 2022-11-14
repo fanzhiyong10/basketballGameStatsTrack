@@ -7,12 +7,16 @@
 
 import SwiftUI
 
+///队员数据表
+///
+///表格形式
+///- header
+///- row
+///- footer
 struct PlayerLiveDataTable: View {
     // State，设定为private。用于父子之间的视图，父亲为State，儿子为Binding
     @State private var liveDatas = LiveData.createData()
     
-    //MARK: - 状态，仅读
-    var plus_minus: Int
     
     var body: some View {
         // 列表：竖向
@@ -20,7 +24,7 @@ struct PlayerLiveDataTable: View {
             List {
                 Section {
                     ForEach(0...liveDatas.count-1, id:\.self) { index in
-                        PlayerLiveDataRow(liveData: $liveDatas[index], plus_minus: plus_minus)
+                        PlayerLiveDataRow(liveData: $liveDatas[index])
                             .frame(height: 60) // 行高
                             .listRowSeparator(.hidden) // 行分割线：隐藏
                             .background { // 行背景色
@@ -38,7 +42,6 @@ struct PlayerLiveDataTable: View {
                 } footer: { // 表尾
                     PlayerLiveDataFooter(liveData: LiveData.createTestData())
                 }
-//                .padding(.top, -10.0)
                 // 行定位1/2：位置，需要设定2处，左侧预留空间8
                 .listRowInsets(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 0)) // leading 8
 
@@ -57,7 +60,7 @@ struct PlayerLiveDataTable: View {
 
 struct PlayerLiveDataTable_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerLiveDataTable(plus_minus: 1)
+        PlayerLiveDataTable()
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }

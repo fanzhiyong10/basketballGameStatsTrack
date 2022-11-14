@@ -12,8 +12,8 @@ struct PlayerLiveDataRow: View {
     let height: CGFloat = 60
     @Binding var liveData: LiveData
     
-    //MARK: - 状态，仅读
-    var plus_minus: Int
+    //MARK: - 全局环境变量使用，仅读
+    @EnvironmentObject var plusMinus: PlusMinus
     
     var body: some View {
         let columnWidths = calColumnWidths()
@@ -76,7 +76,9 @@ struct PlayerLiveDataRow: View {
                             .foregroundColor(.green)
                             .onTapGesture {
                                 print("+")
-                                self.liveData.ft_make_count += self.plus_minus
+                                if self.liveData.ft_make_count > 0 {
+                                    self.liveData.ft_make_count += self.plusMinus.value
+                                }
                             }
                     }
                     .overlay(alignment: .topLeading) {
@@ -93,7 +95,9 @@ struct PlayerLiveDataRow: View {
                             .foregroundColor(.red)
                             .onTapGesture {
                                 print("-")
-                                self.liveData.ft_miss_count += self.plus_minus
+                                if self.liveData.ft_miss_count > 0 {
+                                    self.liveData.ft_miss_count += self.plusMinus.value
+                                }
                             }
                     }
 
@@ -118,7 +122,9 @@ struct PlayerLiveDataRow: View {
                             .foregroundColor(.green)
                             .onTapGesture {
                                 print("+")
-                                self.liveData.fg2_make_count += self.plus_minus
+                                if self.liveData.fg2_make_count > 0 {
+                                    self.liveData.fg2_make_count += self.plusMinus.value
+                                }
                             }
 
                     }
@@ -134,7 +140,9 @@ struct PlayerLiveDataRow: View {
                             .foregroundColor(.red)
                             .onTapGesture {
                                 print("-")
-                                self.liveData.fg2_miss_count += self.plus_minus
+                                if self.liveData.fg2_miss_count > 0 {
+                                    self.liveData.fg2_miss_count += self.plusMinus.value
+                                }
                             }
                     }
 
@@ -159,7 +167,9 @@ struct PlayerLiveDataRow: View {
                             .foregroundColor(.green)
                             .onTapGesture {
                                 print("+")
-                                self.liveData.fg3_make_count += self.plus_minus
+                                if self.liveData.fg3_make_count > 0 {
+                                    self.liveData.fg3_make_count += self.plusMinus.value
+                                }
                             }
                     }
                     .overlay(alignment: .topLeading) {
@@ -175,7 +185,9 @@ struct PlayerLiveDataRow: View {
                             .foregroundColor(.red)
                             .onTapGesture {
                                 print("-")
-                                self.liveData.fg3_miss_count += self.plus_minus
+                                if self.liveData.fg3_miss_count > 0 {
+                                    self.liveData.fg3_miss_count += self.plusMinus.value
+                                }
                             }
                     }
             }
@@ -194,11 +206,21 @@ struct PlayerLiveDataRow: View {
                     .overlay(alignment: .trailing) {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
                     }
+                    .onTapGesture {
+                        if self.liveData.assts_count > 0 {
+                            self.liveData.assts_count += self.plusMinus.value
+                        }
+                    }
 
                 Text(liveData.orebs)
                     .frame(width: columnWidths[10], alignment: .center)
                     .overlay(alignment: .trailing) {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
+                    }
+                    .onTapGesture {
+                        if self.liveData.orebs_count > 0 {
+                            self.liveData.orebs_count += self.plusMinus.value
+                        }
                     }
 
                 Text(liveData.drebs)
@@ -206,11 +228,21 @@ struct PlayerLiveDataRow: View {
                     .overlay(alignment: .trailing) {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
                     }
+                    .onTapGesture {
+                        if self.liveData.drebs_count > 0 {
+                            self.liveData.drebs_count += self.plusMinus.value
+                        }
+                    }
 
                 Text(liveData.steals)
                     .frame(width: columnWidths[12], alignment: .center)
                     .overlay(alignment: .trailing) {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
+                    }
+                    .onTapGesture {
+                        if self.liveData.steals_count > 0 {
+                            self.liveData.steals_count += self.plusMinus.value
+                        }
                     }
 
                 Text(liveData.blocks)
@@ -218,11 +250,21 @@ struct PlayerLiveDataRow: View {
                     .overlay(alignment: .trailing) {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
                     }
+                    .onTapGesture {
+                        if self.liveData.blocks_count > 0 {
+                            self.liveData.blocks_count += self.plusMinus.value
+                        }
+                    }
 
                 Text(liveData.ties)
                     .frame(width: columnWidths[14], alignment: .center)
                     .overlay(alignment: .trailing) {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
+                    }
+                    .onTapGesture {
+                        if self.liveData.ties_count > 0 {
+                            self.liveData.ties_count += self.plusMinus.value
+                        }
                     }
 
                 Text(liveData.defs)
@@ -230,15 +272,30 @@ struct PlayerLiveDataRow: View {
                     .overlay(alignment: .trailing) {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
                     }
+                    .onTapGesture {
+                        if self.liveData.defs_count > 0 {
+                            self.liveData.defs_count += self.plusMinus.value
+                        }
+                    }
 
                 Text(liveData.charges)
                     .frame(width: columnWidths[16], alignment: .center)
                     .overlay(alignment: .trailing) {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
                     }
+                    .onTapGesture {
+                        if self.liveData.charges_count > 0 {
+                            self.liveData.charges_count += self.plusMinus.value
+                        }
+                    }
 
                 Text(liveData.tos)
                     .frame(width: columnWidths[17], alignment: .center)
+                    .onTapGesture {
+                        if self.liveData.tos_count > 0 {
+                            self.liveData.tos_count += self.plusMinus.value
+                        }
+                    }
             }
             
         }
@@ -250,7 +307,7 @@ struct PlayerLiveDataRow: View {
 struct PlayerLiveDataRow_Previews: PreviewProvider {
     static var previews: some View {
         // 绑定Binding，使用.constant(LiveData.createTestData())
-        PlayerLiveDataRow(liveData: .constant(LiveData.createTestData()), plus_minus: 1)
+        PlayerLiveDataRow(liveData: .constant(LiveData.createTestData()))
             .previewInterfaceOrientation(.landscapeRight)
     }
 }

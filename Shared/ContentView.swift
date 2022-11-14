@@ -10,33 +10,20 @@ import CoreData
 
 ///左侧菜单及调用
 struct ContentView: View {
-    func calColumnWidths() -> [CGFloat] {
-        let adjust_width = CGFloat(5)
-        
-        let width_screen = max(UIScreen.main.bounds.size.width, UIScreen.main.bounds.size.height)
-        let width = (width_screen - 16) / CGFloat(headerWords.count) // 间距1
-        
-        let adjust_width2 = adjust_width * 12 / 3
-        
-        let width_headers: [CGFloat] = [width, width - adjust_width, width - adjust_width, width - adjust_width, width - adjust_width, width + adjust_width2, width + adjust_width2, width + adjust_width2, width, width - adjust_width, width - adjust_width, width - adjust_width, width - adjust_width, width - adjust_width, width - adjust_width, width - adjust_width, width - adjust_width, width - adjust_width]
-        
-        return width_headers
-        
-    }
-    
+    //MARK: - 全局环境变量 项目创建时，自动生成
     @Environment(\.managedObjectContext) private var viewContext
 
+    //MARK: - 读数据 项目创建时，自动生成
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         animation: .default)
     private var items: FetchedResults<Item>
     
+    //MARK: - 左侧菜单
     private var items_menu: [String] = ["Players", "New Game", "Share", "Voice Training"]
     
-    var liveDatas = LiveData.createData()
-    
-    //MARK: - 状态及绑定
-    @State private var plus_minus: Int = 1
+    //MARK: - 全局环境变量 PlusMinus，声明
+    let plusMinus = PlusMinus()
     
     var body: some View {
         NavigationView {
@@ -48,26 +35,28 @@ struct ContentView: View {
                             Text("Item at \(items_menu[index])")
                             
                         case 1 :
-                            MainTracker(plus_minus: $plus_minus)
+                            // 主页面
+                            MainTracker()
                             
                         default :
-                            PlayerLiveDataTable(plus_minus: plus_minus)
+                            // 主页面
+                            MainTracker()
                         }
                         
                     } label: {
                         Text(items_menu[index])
                     }
                 }
-//                .onDelete(perform: deleteItems)
             }
             .navigationTitle(Text("Game Tracker"))
             
             
             VStack {
-                MainTracker(plus_minus: $plus_minus)
+                MainTracker()
             }
         }
-        
+        // 全局环境变量 2.必须确保传入
+        .environmentObject(plusMinus)
     }
 
     private func addItem() {

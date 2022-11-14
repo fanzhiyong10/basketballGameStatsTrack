@@ -50,6 +50,10 @@ struct PlayerLiveDataHeader: View {
                 .overlay(alignment: .trailing) {
                     Color.white.frame(width: 1, height: height, alignment: .trailing)
                 }
+            
+            // 不使用Divider，颜色，占位
+//            Divider()
+//                .background(Color.white)
 
             Text(headerWords[1])
                 .multilineTextAlignment(.center)

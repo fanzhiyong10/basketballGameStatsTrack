@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct PlusMinusToggle: View {
-    @State var isEnhanced = true
+    //MARK: - 全局环境变量 PlusMinus
+    @EnvironmentObject var plusMinus: PlusMinus
 
     var body: some View {
         HStack(spacing: 0) {
-            Toggle(isOn: $isEnhanced) {
+            Toggle(isOn: $plusMinus.isOn) {
                 Text("-")
                     .font(.largeTitle)
             }
@@ -33,3 +34,4 @@ struct PlusMinusToggle_Previews: PreviewProvider {
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }
+
