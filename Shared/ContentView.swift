@@ -22,8 +22,8 @@ struct ContentView: View {
     //MARK: - 左侧菜单
     private var items_menu: [String] = ["Players", "New Game", "Share", "Voice Training"]
     
-    //MARK: - 全局环境变量 PlusMinus，声明
-    @EnvironmentObject var plusMinus: MainStateControl
+    //MARK: - 全局环境变量 状态控制，声明
+    @EnvironmentObject var mainStates: MainStateControl
     
     var body: some View {
         NavigationView {

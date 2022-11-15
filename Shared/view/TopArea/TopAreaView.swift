@@ -34,8 +34,8 @@ class MainStateControl: ObservableObject {
 
 struct TopAreaView: View {
     
-    //MARK: - 全局环境变量 PlusMinus
-    @EnvironmentObject var plusMinus: MainStateControl
+    //MARK: - 全局环境变量 状态控制
+    @EnvironmentObject var mainStates: MainStateControl
 
     var body: some View {
         HStack(alignment: .top, spacing: 20) {
@@ -44,10 +44,10 @@ struct TopAreaView: View {
                 .padding(.leading, 12)
                 .padding(.top, 55)
                 .frame(width: 72, height: 115, alignment: .center)
-                .foregroundColor(self.plusMinus.isOnVoiceControl ? .green : .gray)
+                .foregroundColor(self.mainStates.isOnVoiceControl ? .green : .gray)
                 .onTapGesture {
                     print("mic.circle.fill")
-                    self.plusMinus.isOnVoiceControl.toggle()
+                    self.mainStates.isOnVoiceControl.toggle()
                 }
             
             VStack(alignment: .leading, spacing: 6) {

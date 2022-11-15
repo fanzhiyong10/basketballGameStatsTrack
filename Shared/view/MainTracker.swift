@@ -13,8 +13,8 @@ import SwiftUI
 /// - 隐藏导航栏区域，该区域的对象会响应设定的事件
 struct MainTracker: View {
     
-    //MARK: - 全局环境变量 PlusMinus
-    @EnvironmentObject var plusMinus: MainStateControl
+    //MARK: - 全局环境变量 状态控制
+    @EnvironmentObject var mainStates: MainStateControl
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -25,7 +25,7 @@ struct MainTracker: View {
             PlayerLiveDataTable()
                 .ignoresSafeArea()
                 .overlay(alignment: .topLeading) {
-                    if self.plusMinus.isOnZoomin {
+                    if self.mainStates.isOnZoomin {
                         // 场上队员表：放大显示
                         VStack(spacing: 0) {
                             OnCourtPlayerLiveDataTable()
