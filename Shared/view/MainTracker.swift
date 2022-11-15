@@ -14,7 +14,7 @@ import SwiftUI
 struct MainTracker: View {
     
     //MARK: - 全局环境变量 PlusMinus
-    @EnvironmentObject var plusMinus: PlusMinus
+    @EnvironmentObject var plusMinus: MainStateControl
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -46,7 +46,7 @@ struct MainTracker: View {
 struct MainTracker_Previews: PreviewProvider {
     static var previews: some View {
         MainTracker()
-            .environmentObject(PlusMinus())
+            .environmentObject(MainStateControl())
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }

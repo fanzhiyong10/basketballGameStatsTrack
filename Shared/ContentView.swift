@@ -23,7 +23,7 @@ struct ContentView: View {
     private var items_menu: [String] = ["Players", "New Game", "Share", "Voice Training"]
     
     //MARK: - 全局环境变量 PlusMinus，声明
-    @EnvironmentObject var plusMinus: PlusMinus
+    @EnvironmentObject var plusMinus: MainStateControl
     
     var body: some View {
         NavigationView {
@@ -99,7 +99,7 @@ private let itemFormatter: DateFormatter = {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .environmentObject(PlusMinus())
+            .environmentObject(MainStateControl())
             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext).previewInterfaceOrientation(.landscapeLeft)
     }
 }

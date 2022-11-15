@@ -9,15 +9,15 @@ import SwiftUI
 
 struct PlusMinusToggle: View {
     //MARK: - 全局环境变量 PlusMinus
-    @EnvironmentObject var plusMinus: PlusMinus
+    @EnvironmentObject var plusMinus: MainStateControl
 
     var body: some View {
         HStack(spacing: 0) {
-            Toggle(isOn: $plusMinus.isOn) {
+            Toggle(isOn: $plusMinus.isOnPlusMinus) {
                 Text("-")
                     .font(.largeTitle)
                     .onTapGesture {
-                        plusMinus.isOn = false
+                        plusMinus.isOnPlusMinus = false
                     }
             }
                 .toggleStyle(.switch)
@@ -27,7 +27,7 @@ struct PlusMinusToggle: View {
             Text("+")
                 .font(.largeTitle)
                 .onTapGesture {
-                    plusMinus.isOn = true
+                    plusMinus.isOnPlusMinus = true
                 }
         }
         .frame(width: 100, height: 50)
@@ -37,7 +37,7 @@ struct PlusMinusToggle: View {
 struct PlusMinusToggle_Previews: PreviewProvider {
     static var previews: some View {
         PlusMinusToggle()
-            .environmentObject(PlusMinus())
+            .environmentObject(MainStateControl())
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }

@@ -13,7 +13,7 @@ struct PlayerLiveDataRow: View {
     var height: CGFloat = 60
     
     //MARK: - 全局环境变量使用，仅读
-    @EnvironmentObject var plusMinus: PlusMinus
+    @EnvironmentObject var plusMinus: MainStateControl
     
     let delta = calDeltaPercent()
     
@@ -320,7 +320,7 @@ struct PlayerLiveDataRow_Previews: PreviewProvider {
     static var previews: some View {
         // 绑定Binding，使用.constant(LiveData.createTestData())
         PlayerLiveDataRow(liveData: .constant(LiveData.createTestData()))
-            .environmentObject(PlusMinus())
+            .environmentObject(MainStateControl())
             .previewInterfaceOrientation(.landscapeRight)
     }
 }
