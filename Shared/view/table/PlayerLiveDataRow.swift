@@ -9,14 +9,23 @@ import SwiftUI
 
 struct PlayerLiveDataRow: View {
     
-    let height: CGFloat = 60
     @Binding var liveData: LiveData
+    var height: CGFloat = 60
     
     //MARK: - 全局环境变量使用，仅读
     @EnvironmentObject var plusMinus: PlusMinus
     
+    let delta = calDeltaPercent()
+    
     var body: some View {
         let columnWidths = calColumnWidths()
+        let fontBig_size = CGFloat(22) - delta * 5.0
+
+        let fontMiddle_size = CGFloat(20) - delta * 5.0
+        let fontMakeMiss_size = CGFloat(20) - delta * 5.0
+        let fontName_size = CGFloat(16) - delta * 5.0
+        let fontNameBig_size = CGFloat(20) - delta * 5.0
+
         // 需要设定spacing: 0，缺省不为0
         HStack(alignment: .center, spacing: 0) {
             // nil检测
@@ -26,23 +35,26 @@ struct PlayerLiveDataRow: View {
                     // 分隔符：列
                     Color.white.frame(width: 1, height: height, alignment: .trailing)
                 }
-                .font(liveData.isOnCourt == true ? Font.system(size: 24) : nil)
+                .font(liveData.isOnCourt == true ? Font.system(size: fontNameBig_size, weight: .bold) : Font.system(size: fontName_size))
                 .foregroundColor(liveData.isOnCourt == true ? Color.green : nil)
 
             Text(liveData.number != nil ? liveData.number! : "")
                 .frame(width: columnWidths[1], alignment: .center)
+                .font(.system(size: fontMiddle_size))
                 .overlay(alignment: .trailing) {
                     Color.white.frame(width: 1, height: height, alignment: .trailing)
                 }
 
             Text(liveData.minutes)
                 .frame(width: columnWidths[2], alignment: .center)
+                .font(.system(size: fontMiddle_size))
                 .overlay(alignment: .trailing) {
                     Color.white.frame(width: 1, height: height, alignment: .trailing)
                 }
 
             Text(liveData.per)
                 .frame(width: columnWidths[3], alignment: .center)
+                .font(.system(size: fontMiddle_size))
                 .overlay(alignment: .trailing) {
                     Color.white.frame(width: 1, height: height, alignment: .trailing)
                 }
@@ -51,6 +63,7 @@ struct PlayerLiveDataRow: View {
             HStack(alignment: .center, spacing: 0) { // 4 - 7
                 Text(liveData.points)
                     .frame(width: columnWidths[4], alignment: .center)
+                    .font(.system(size: fontMiddle_size))
                     .overlay(alignment: .trailing) {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
                     }
@@ -58,6 +71,7 @@ struct PlayerLiveDataRow: View {
                 Text(liveData.ft)
                     .multilineTextAlignment(.center)
                     .frame(width: columnWidths[5], height: height, alignment: .center)
+                    .font(.system(size: fontMakeMiss_size))
                     .overlay(alignment: .trailing) {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
                     }
@@ -104,6 +118,7 @@ struct PlayerLiveDataRow: View {
                 Text(liveData.fg2)
                     .multilineTextAlignment(.center)
                     .frame(width: columnWidths[6], height: height, alignment: .center)
+                    .font(.system(size: fontMakeMiss_size))
                     .overlay(alignment: .trailing) {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
                     }
@@ -147,6 +162,7 @@ struct PlayerLiveDataRow: View {
                 Text(liveData.fg3)
                     .multilineTextAlignment(.center)
                     .frame(width: columnWidths[7], height: height, alignment: .center)
+                    .font(.system(size: fontMakeMiss_size))
                     .overlay(alignment: .trailing) {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
                     }
@@ -190,6 +206,7 @@ struct PlayerLiveDataRow: View {
 
             Text(liveData.eFG)
                 .frame(width: columnWidths[8], alignment: .center)
+                .font(.system(size: fontMiddle_size))
                 .overlay(alignment: .trailing) {
                     Color.white.frame(width: 1, height: height, alignment: .trailing)
                 }
@@ -198,6 +215,7 @@ struct PlayerLiveDataRow: View {
             HStack(alignment: .center, spacing: 0) {
                 Text(liveData.assts)
                     .frame(width: columnWidths[9], alignment: .center)
+                    .font(.system(size: fontBig_size))
                     .overlay(alignment: .trailing) {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
                     }
@@ -208,6 +226,7 @@ struct PlayerLiveDataRow: View {
 
                 Text(liveData.orebs)
                     .frame(width: columnWidths[10], alignment: .center)
+                    .font(.system(size: fontBig_size))
                     .overlay(alignment: .trailing) {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
                     }
@@ -218,6 +237,7 @@ struct PlayerLiveDataRow: View {
 
                 Text(liveData.drebs)
                     .frame(width: columnWidths[11], alignment: .center)
+                    .font(.system(size: fontBig_size))
                     .overlay(alignment: .trailing) {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
                     }
@@ -228,6 +248,7 @@ struct PlayerLiveDataRow: View {
 
                 Text(liveData.steals)
                     .frame(width: columnWidths[12], alignment: .center)
+                    .font(.system(size: fontBig_size))
                     .overlay(alignment: .trailing) {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
                     }
@@ -238,6 +259,7 @@ struct PlayerLiveDataRow: View {
 
                 Text(liveData.blocks)
                     .frame(width: columnWidths[13], alignment: .center)
+                    .font(.system(size: fontBig_size))
                     .overlay(alignment: .trailing) {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
                     }
@@ -248,6 +270,7 @@ struct PlayerLiveDataRow: View {
 
                 Text(liveData.ties)
                     .frame(width: columnWidths[14], alignment: .center)
+                    .font(.system(size: fontBig_size))
                     .overlay(alignment: .trailing) {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
                     }
@@ -258,6 +281,7 @@ struct PlayerLiveDataRow: View {
 
                 Text(liveData.defs)
                     .frame(width: columnWidths[15], alignment: .center)
+                    .font(.system(size: fontBig_size))
                     .overlay(alignment: .trailing) {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
                     }
@@ -268,6 +292,7 @@ struct PlayerLiveDataRow: View {
 
                 Text(liveData.charges)
                     .frame(width: columnWidths[16], alignment: .center)
+                    .font(.system(size: fontBig_size))
                     .overlay(alignment: .trailing) {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
                     }
@@ -278,6 +303,7 @@ struct PlayerLiveDataRow: View {
 
                 Text(liveData.tos)
                     .frame(width: columnWidths[17], alignment: .center)
+                    .font(.system(size: fontBig_size))
                     .onTapGesture {
                         let result = self.liveData.tos_count + self.plusMinus.value
                         self.liveData.tos_count = result >= 0 ? result : 0

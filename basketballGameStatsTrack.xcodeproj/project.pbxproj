@@ -36,6 +36,7 @@
 		662F354E2920DFFC005130A0 /* TeamPeriodScoreHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662F354D2920DFFC005130A0 /* TeamPeriodScoreHeader.swift */; };
 		662F355029211400005130A0 /* OpponentScoreStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662F354F29211400005130A0 /* OpponentScoreStepper.swift */; };
 		662F355229213F06005130A0 /* PlusMinusToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662F355129213F06005130A0 /* PlusMinusToggle.swift */; };
+		6669605D2923253500303E28 /* OnCourtPlayerLiveDataTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6669605C2923253500303E28 /* OnCourtPlayerLiveDataTable.swift */; };
 		66ECD6EC291FC2C200719DCF /* TopAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66ECD6EB291FC2C200719DCF /* TopAreaView.swift */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +87,7 @@
 		662F354D2920DFFC005130A0 /* TeamPeriodScoreHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamPeriodScoreHeader.swift; sourceTree = "<group>"; };
 		662F354F29211400005130A0 /* OpponentScoreStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpponentScoreStepper.swift; sourceTree = "<group>"; };
 		662F355129213F06005130A0 /* PlusMinusToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusMinusToggle.swift; sourceTree = "<group>"; };
+		6669605C2923253500303E28 /* OnCourtPlayerLiveDataTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnCourtPlayerLiveDataTable.swift; sourceTree = "<group>"; };
 		66ECD6EB291FC2C200719DCF /* TopAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopAreaView.swift; sourceTree = "<group>"; };
 		66ECD6ED291FD45400719DCF /* basketballGameStatsTrack--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "basketballGameStatsTrack--iOS--Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -243,6 +245,7 @@
 				66086E7B291E95DA000FADC3 /* PlayerLiveDataFooter.swift */,
 				66086E79291E8710000FADC3 /* PlayerLiveDataHeader.swift */,
 				66086E7D291E96B2000FADC3 /* PlayerLiveDataTable.swift */,
+				6669605C2923253500303E28 /* OnCourtPlayerLiveDataTable.swift */,
 			);
 			path = table;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 				662F354A2920D1F7005130A0 /* TeamPeriodScoreTable.swift in Sources */,
 				66086E56291DAFAD000FADC3 /* basketballGameStatsTrackApp.swift in Sources */,
 				66086E5A291DAFAD000FADC3 /* Persistence.swift in Sources */,
+				6669605D2923253500303E28 /* OnCourtPlayerLiveDataTable.swift in Sources */,
 				66086E7E291E96B2000FADC3 /* PlayerLiveDataTable.swift in Sources */,
 				66ECD6EC291FC2C200719DCF /* TopAreaView.swift in Sources */,
 				662F354C2920D245005130A0 /* TeamPeriodScoreRow.swift in Sources */,

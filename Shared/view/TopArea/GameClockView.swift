@@ -17,6 +17,9 @@ import SwiftUI
 /// - 计时器显示文本 onReceive(timer)
 /// - 状态控制：started，显示的按钮（START、STOP）及 是否对计时器进行累加
 struct GameClockView: View {
+    //MARK: - 全局环境变量 PlusMinus
+    @EnvironmentObject var plusMinus: PlusMinus
+
     //MARK: - 控制按钮的显示：START、STOP
     @State var started = false
     
@@ -80,6 +83,7 @@ struct GameClockView: View {
                         .font(.system(size: 50))
                         .onTapGesture {
                             print("plus.magnifyingglass")
+                            plusMinus.isOnZoomin.toggle()
                         }
                     
                     Spacer()

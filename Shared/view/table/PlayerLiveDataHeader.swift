@@ -7,6 +7,21 @@
 
 import SwiftUI
 
+/// 与iPad12.9相比，小多少
+func calDelta() -> CGFloat {
+    let maxWidth = max(UIScreen.main.bounds.height, UIScreen.main.bounds.width)
+    
+    if maxWidth >= 1366.0 {
+        return 0.0
+    }
+    
+    return 1366.0 - maxWidth
+}
+
+func calDeltaPercent() -> CGFloat {
+    return calDelta() / 1366.0
+}
+
 /// 列宽计算
 ///
 /// 调用者

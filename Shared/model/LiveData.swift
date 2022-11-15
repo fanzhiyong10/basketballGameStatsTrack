@@ -270,6 +270,16 @@ struct LiveData {
         
         return liveData
     }
+
+    static func createDataOnCourt() -> [LiveData] {
+        let liveDatas = createData()
+        
+        let result = liveDatas.filter { liveData in
+            return liveData.isOnCourt
+        }
+        
+        return result
+    }
     
     static func createData() -> [LiveData] {
         var liveDatas = [LiveData]()

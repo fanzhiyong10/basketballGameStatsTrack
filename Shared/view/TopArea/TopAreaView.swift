@@ -24,6 +24,12 @@ class PlusMinus: ObservableObject {
     
     // 声控，缺省为false
     @Published var isOnVoiceControl = false
+    
+    // 大表显示，缺省为false，不显示
+    @Published var isOnZoomin = false
+    
+    // 手动输入显示，缺省为false，不显示
+    @Published var isOnManualCommand = false
 }
 
 struct TopAreaView: View {
@@ -45,11 +51,13 @@ struct TopAreaView: View {
                 }
             
             VStack(alignment: .leading, spacing: 6) {
-                PlusMinusToggle()
-                
                 Text("\"Ben Make\"")
                     .font(.title)
                     .foregroundColor(.green)
+                    .padding(.leading, -60)
+                
+                PlusMinusToggle()
+                    .padding(.leading, 20)
                 
                 Text("Manual Command")
                     .font(.title3)
