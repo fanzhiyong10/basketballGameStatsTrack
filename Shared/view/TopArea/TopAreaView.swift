@@ -7,35 +7,13 @@
 
 import SwiftUI
 
-///全局变量
-class MainStateControl: ObservableObject {
-    // PlusMinus，缺省为+1，true
-    @Published var isOnPlusMinus = true
-    
-    var value: Int {
-        if isOnPlusMinus {
-            print("isOn == true")
-            return 1
-        } else {
-            print("isOn == false")
-            return -1
-        }
-    }
-    
-    // 声控，缺省为false
-    @Published var isOnVoiceControl = false
-    
-    // 大表显示，缺省为false，不显示
-    @Published var isOnZoomin = false
-    
-    // 手动输入显示，缺省为false，不显示
-    @Published var isOnManualCommand = false
-}
-
 struct TopAreaView: View {
     
     //MARK: - 全局环境变量 状态控制
     @EnvironmentObject var mainStates: MainStateControl
+
+    //MARK: -  我队的比赛数据 1.必须确保生成
+    @Binding var liveDatas : [LiveData]
 
     var body: some View {
         HStack(alignment: .top, spacing: 20) {
@@ -69,7 +47,7 @@ struct TopAreaView: View {
             
             Spacer()
             
-            GameClockView()
+            GameClockView(liveDatas: $liveDatas)
                 .padding(.top, 8)
 
             Spacer()
@@ -91,7 +69,7 @@ struct TopAreaView: View {
 
 struct TopAreaView_Previews: PreviewProvider {
     static var previews: some View {
-        TopAreaView()
+        TopAreaView(liveDatas: .constant(LiveData.createData()))
             .environmentObject(MainStateControl())
             .previewInterfaceOrientation(.landscapeLeft)
     }

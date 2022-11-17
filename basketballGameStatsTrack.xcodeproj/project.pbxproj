@@ -37,6 +37,9 @@
 		662F355029211400005130A0 /* OpponentScoreStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662F354F29211400005130A0 /* OpponentScoreStepper.swift */; };
 		662F355229213F06005130A0 /* PlusMinusToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662F355129213F06005130A0 /* PlusMinusToggle.swift */; };
 		6669605D2923253500303E28 /* OnCourtPlayerLiveDataTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6669605C2923253500303E28 /* OnCourtPlayerLiveDataTable.swift */; };
+		6669605F29238BC300303E28 /* MainStateControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6669605E29238BC300303E28 /* MainStateControl.swift */; };
+		6669606129238CF300303E28 /* LiveDataTableInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6669606029238CF300303E28 /* LiveDataTableInfo.swift */; };
+		66C627232924C56700453597 /* PlayersTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C627222924C56700453597 /* PlayersTable.swift */; };
 		66ECD6EC291FC2C200719DCF /* TopAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66ECD6EB291FC2C200719DCF /* TopAreaView.swift */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +91,9 @@
 		662F354F29211400005130A0 /* OpponentScoreStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpponentScoreStepper.swift; sourceTree = "<group>"; };
 		662F355129213F06005130A0 /* PlusMinusToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusMinusToggle.swift; sourceTree = "<group>"; };
 		6669605C2923253500303E28 /* OnCourtPlayerLiveDataTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnCourtPlayerLiveDataTable.swift; sourceTree = "<group>"; };
+		6669605E29238BC300303E28 /* MainStateControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStateControl.swift; sourceTree = "<group>"; };
+		6669606029238CF300303E28 /* LiveDataTableInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveDataTableInfo.swift; sourceTree = "<group>"; };
+		66C627222924C56700453597 /* PlayersTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersTable.swift; sourceTree = "<group>"; };
 		66ECD6EB291FC2C200719DCF /* TopAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopAreaView.swift; sourceTree = "<group>"; };
 		66ECD6ED291FD45400719DCF /* basketballGameStatsTrack--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "basketballGameStatsTrack--iOS--Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -191,6 +197,7 @@
 		66086E6C291DB735000FADC3 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				66C627212924C52100453597 /* playersTable */,
 				662F35482920D0B7005130A0 /* teamTable */,
 				66ECD6EA291FC24700719DCF /* table */,
 				66086E6F291DC793000FADC3 /* MainTracker.swift */,
@@ -203,8 +210,10 @@
 			isa = PBXGroup;
 			children = (
 				66086E73291E4C7A000FADC3 /* LiveData.swift */,
+				6669606029238CF300303E28 /* LiveDataTableInfo.swift */,
 				66086E72291E4C7A000FADC3 /* ShareStep.swift */,
 				66086E71291E4C7A000FADC3 /* TeamInfo.swift */,
+				6669605E29238BC300303E28 /* MainStateControl.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -236,6 +245,14 @@
 				662F354F29211400005130A0 /* OpponentScoreStepper.swift */,
 			);
 			path = teamTable;
+			sourceTree = "<group>";
+		};
+		66C627212924C52100453597 /* playersTable */ = {
+			isa = PBXGroup;
+			children = (
+				66C627222924C56700453597 /* PlayersTable.swift */,
+			);
+			path = playersTable;
 			sourceTree = "<group>";
 		};
 		66ECD6EA291FC24700719DCF /* table */ = {
@@ -418,10 +435,13 @@
 				6669605D2923253500303E28 /* OnCourtPlayerLiveDataTable.swift in Sources */,
 				66086E7E291E96B2000FADC3 /* PlayerLiveDataTable.swift in Sources */,
 				66ECD6EC291FC2C200719DCF /* TopAreaView.swift in Sources */,
+				6669605F29238BC300303E28 /* MainStateControl.swift in Sources */,
 				662F354C2920D245005130A0 /* TeamPeriodScoreRow.swift in Sources */,
 				66086E7A291E8710000FADC3 /* PlayerLiveDataHeader.swift in Sources */,
+				66C627232924C56700453597 /* PlayersTable.swift in Sources */,
 				66086E74291E4C7A000FADC3 /* TeamInfo.swift in Sources */,
 				662F354E2920DFFC005130A0 /* TeamPeriodScoreHeader.swift in Sources */,
+				6669606129238CF300303E28 /* LiveDataTableInfo.swift in Sources */,
 				66086E76291E4C7A000FADC3 /* LiveData.swift in Sources */,
 				66086E54291DAFAD000FADC3 /* basketballGameStatsTrack.xcdatamodeld in Sources */,
 				66086E75291E4C7A000FADC3 /* ShareStep.swift in Sources */,

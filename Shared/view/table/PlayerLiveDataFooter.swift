@@ -62,6 +62,7 @@ struct PlayerLiveDataFooter: View {
                     }
 
                 Text(liveData.ft)
+                    .multilineTextAlignment(.center)
                     .frame(width: columnWidths[5], alignment: .center)
                     .font(.system(size: fontMakeMiss_size))
                     .overlay(alignment: .trailing) {
@@ -69,6 +70,7 @@ struct PlayerLiveDataFooter: View {
                     }
 
                 Text(liveData.fg2)
+                    .multilineTextAlignment(.center)
                     .frame(width: columnWidths[6], alignment: .center)
                     .font(.system(size: fontMakeMiss_size))
                     .overlay(alignment: .trailing) {
@@ -77,6 +79,7 @@ struct PlayerLiveDataFooter: View {
 
      
                 Text(liveData.fg3)
+                    .multilineTextAlignment(.center)
                     .frame(width: columnWidths[7], alignment: .center)
                     .font(.system(size: fontMakeMiss_size))
                     .overlay(alignment: .trailing) {

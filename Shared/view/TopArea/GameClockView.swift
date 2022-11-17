@@ -23,25 +23,30 @@ struct GameClockView: View {
     //MARK: - 控制按钮的显示：START、STOP
     @State var started = false
     
-    //MARK: - 比赛进行了多长时间，计数器
-    @State private var game_cum_duration: Float = 23 * 60 + 45
-    
+    //MARK: -  我队的比赛数据 1.必须确保生成
+    @Binding var liveDatas : [LiveData]
+
     //MARK: - 比赛计时器，每个1秒钟更新一次（重复），1）点击start开始计时，2）点击stop停止计时
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
 
             VStack(alignment: .center, spacing: 10) {
-                Text("\(calGameClock())")
+                Text("\(calGameClock(game_cum_duration: mainStates.game_cum_duration))")
                     .frame(width: 350)
                     .font(.system(size: 32))
                     .foregroundColor(.green)
                     .onReceive(timer) { time in
                         if started == true {
                             // 开始后，计时器：累加
-                            self.game_cum_duration += 1
+                            mainStates.game_cum_duration += 1
                             
                             // 上场队员的计时累加
+                            for index in 0...liveDatas.count - 1 {
+                                if liveDatas[index].isOnCourt {
+                                    liveDatas[index].time_cumulative += 1.0
+                                }
+                            }
                         }
                     }
                 
@@ -94,7 +99,10 @@ struct GameClockView: View {
                         .background(Color.blue)
                         .foregroundColor(.white)
                         .cornerRadius(10)
-                    
+                        .onTapGesture {
+                            
+                            mainStates.isOnPlayers.toggle()
+                        }
 
                 }
                 .frame(width: 350.0)
@@ -105,10 +113,10 @@ struct GameClockView: View {
     }
     
     /// 计时器 换算为显示的 时：分：秒
-    func calGameClock() -> String {
-        let hours = Int(self.game_cum_duration / 3600)
-        let minutes = Int((self.game_cum_duration - Float(hours) * 3600) / 60)
-        let seconds = Int(self.game_cum_duration - Float(hours) * 3600 - Float(minutes * 60))
+    func calGameClock(game_cum_duration: Float) -> String {
+        let hours = Int(game_cum_duration / 3600)
+        let minutes = Int((game_cum_duration - Float(hours) * 3600) / 60)
+        let seconds = Int(game_cum_duration - Float(hours) * 3600 - Float(minutes * 60))
         var str = "Game Clock  "
         str += String(format: "%02d", hours) + " : "
         str += String(format: "%02d", minutes) + " : "
@@ -120,7 +128,7 @@ struct GameClockView: View {
 
 struct GameClockView_Previews: PreviewProvider {
     static var previews: some View {
-        GameClockView()
+        GameClockView(liveDatas: .constant(LiveData.createData()))
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }

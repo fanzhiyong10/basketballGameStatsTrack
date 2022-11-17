@@ -7,29 +7,76 @@
 
 import UIKit
 
-// Header Words
-let headerWords = ["PLAYER", "NUMBER", "MINUTES", "PER", "POINTS", "FT", "2FG", "3FG", "eFG%", "ASSTS", "OREBS", "DREBS", "STEALS", "BLOCKS", "TIES", "DEFS", "CHARGES", "TOS"]
 
-let headerWordsPart1 = ["PLAYER", "NUMBER", "MINUTES", "PER", "POINTS", "FT Make", "FT Total", "FT Make %", "2FG Make", "2FG Total", "2FG Make %", "3FG Make", "3FG Total", "3FG Make %", "eFG%", "ASSTS", "OREBS", "DREBS", "STEALS", "BLOCKS", "TIES", "DEFS", "CHARGES", "TOS"]
-let headerWordsPart2 = ["1pt make", "1pt miss", "1pt %", "2pt make", "2pt miss", "2pt %", "3pt make", "3pt miss", "3pt %"]
 
-let headerCellColors: [UIColor] = [UIColor.clear, UIColor.clear, UIColor.clear, UIColor.clear, UIColor.clear, UIColor.clear, UIColor.clear, UIColor.clear, UIColor.clear, UIColor.systemYellow, UIColor.systemOrange, UIColor(displayP3Red: 1.0, green: 1.0, blue: 224.0/255, alpha: 1.0), UIColor(displayP3Red: 192.0/255, green: 192.0/255, blue: 192.0/255, alpha: 1.0), UIColor.black, UIColor.purple, UIColor.gray, UIColor.systemGreen, UIColor.systemRed]
-
-let headerFontColors: [UIColor] = [UIColor.white, UIColor.white, UIColor.white, UIColor.white, UIColor.white, UIColor.white, UIColor.white, UIColor.white, UIColor.white, UIColor.systemBlue, UIColor.systemBlue, UIColor.systemBlue, UIColor.systemBlue, UIColor.white, UIColor.white, UIColor.white, UIColor.white, UIColor.white]
-/*
 /// 主队信息
-class MyTeamInfo {
+///
+/// 场景说明
+/// - 当前正在比赛的小节，可以修改
+/// - 选中几个小节（比赛已经结束），不能修改
+/// - 选中的小节（1个）（比赛尚未结束，该小节已经结束），可以修改
+/// - 表单显示的数据
+class MyTeamInfo: ObservableObject {
+    init() {
+        self.newGameOfMyTeamInfos()
+    }
+    
+    /// 1.1 主队
+    ///
+    /// 包括
+    /// - 1.1 第1小节
+    /// - 1.1 第2-7小节
+    func newGameOfMyTeamInfos() {
+        self.periodInfos = [PeriodInfo]()
+        
+        self.newPeriod1()
+        self.processPeriod2_7()
+        
+        // 测试
+        print(self.toStringOfCsv()!)
+    }
+    
+    func newPeriod1() {
+        let periodInfo = PeriodInfo()
+        periodInfo.name = "P1"
+//        periodInfo.liveDatas = self.liveDatasWithoutPlaying
+        periodInfo.liveDatas = LiveData.createData()
+        periodInfo.status = .NotStart // IsPlayingOnDisplay
+        periodInfo.isSelected = true
+        periodInfo.isHighlight = true
+        
+        self.periodInfos.append(periodInfo)
+    }
+    
+    func processPeriod2_7() {
+        for index in 2...7 {
+            let periodInfo = PeriodInfo()
+            if index < 5 {
+                periodInfo.name = "P\(index)"
+            } else {
+                periodInfo.name = "O\(index - 4)"
+            }
+//            periodInfo.liveDatas = self.liveDatasWithoutPlaying
+            periodInfo.liveDatas = LiveData.createData()
+            periodInfo.status = .NotStart
+            periodInfo.isSelected = false
+            periodInfo.isHighlight = false
+            
+            self.periodInfos.append(periodInfo)
+        }
+    }
+    
     // 队名
     var name: String? = "Team"
     
     // 7个小节的比赛数据
-    var periodInfos: [PeriodInfo]?
+    @Published var periodInfos = [PeriodInfo]()
     
     // 比赛得分
     var score: Int {
         var total = 0
         if periodInfos != nil {
-            for item in periodInfos! {
+            for item in periodInfos {
                 total += item.score // 得分
             }
         }
@@ -43,12 +90,12 @@ class MyTeamInfo {
             return nil
         }
         
-        if self.periodInfos?.first?.status == .NotStart {
+        if self.periodInfos.first?.status == .NotStart {
             // 第一个
-            return self.periodInfos?.first
+            return (self.periodInfos.first)!
         }
         
-        for pinf in self.periodInfos! {
+        for pinf in self.periodInfos {
             switch pinf.status {
             case .IsPlayingOnDisplay, .IsPlayingOffDisplay:
                 
@@ -56,7 +103,7 @@ class MyTeamInfo {
                     // 排序
                     var arr_onCourt = [LiveData]()
                     var arr_notOnCourt = [LiveData]()
-                    for livedata in pinf.liveDatas! {
+                    for livedata in pinf.liveDatas {
                         if livedata.isOnCourt {
                             arr_onCourt.append(livedata)
                         } else {
@@ -76,6 +123,7 @@ class MyTeamInfo {
         }
         
         return nil
+//        return (self.periodInfos?.first)!
     }
     
     
@@ -85,7 +133,7 @@ class MyTeamInfo {
             return nil
         }
         
-        for (index, pinf) in self.periodInfos!.enumerated() {
+        for (index, pinf) in self.periodInfos.enumerated() {
             switch pinf.status {
             case .IsPlayingOnDisplay, .IsPlayingOffDisplay:
                 return index
@@ -104,7 +152,7 @@ class MyTeamInfo {
         }
         
         var count = 0
-        for pinf in self.periodInfos! {
+        for pinf in self.periodInfos {
             if pinf.isHighlight {
                 count += 1
             }
@@ -114,12 +162,12 @@ class MyTeamInfo {
     }
     
     // 多个高亮时的合并数据，不能做修改，不包括正在比赛中的。比赛的另外计算
-    var liveDatasOnHighlight: [LiveData]? {
+    var liveDatasOnHighlight: [LiveData] {
         print("liveDatasOnHighlight")
         if countOfPeriodOnHighlight == 1 {
             print("if countOfPeriodOnHighlight == 1")
             // 将高亮的返回
-            for pinf in self.periodInfos! {
+            for pinf in self.periodInfos {
                 if pinf.isHighlight {
                     return pinf.liveDatas
                 }
@@ -127,11 +175,11 @@ class MyTeamInfo {
         } else {
             print("statisticsLiveData")
             // 创建一个统计数组，并返回，排序按照字母顺序
-            let statisticsLiveData = liveDatasWithoutPlaying
+            var statisticsLiveData = liveDatasWithoutPlaying
             
-            for pinf in self.periodInfos! {
+            for pinf in self.periodInfos {
                 if pinf.isHighlight {
-                    for (index, ld) in pinf.liveDatas!.enumerated() {
+                    for (index, ld) in pinf.liveDatas.enumerated() {
                         statisticsLiveData[index].time_cumulative += ld.time_cumulative
                         
                         statisticsLiveData[index].ft_make_count += ld.ft_make_count
@@ -160,14 +208,17 @@ class MyTeamInfo {
             }
             return statisticsLiveData
         }
-        return nil
+//        return nil
+        return self.periodInfos[0].liveDatas
     }
+    
+    @Published var liveDatasWithoutPlaying2 = LiveData.createData()
     
     var liveDatasWithoutPlaying: [LiveData] {
         var result = [LiveData]()
         
-        for tmp in self.periodInfos![0].liveDatas! {
-            let ld = LiveData()
+        for tmp in self.periodInfos[0].liveDatas {
+            var ld = LiveData()
             
             ld.id = tmp.id
             ld.player = tmp.player
@@ -176,8 +227,43 @@ class MyTeamInfo {
             
             result.append(ld)
         }
-        
+        print("liveDatasWithoutPlaying")
         return result
+    }
+    
+    var liveDatasWithPlaying: [LiveData] {
+        var result = [LiveData]()
+        
+        for tmp in self.periodInfos[0].liveDatas {
+            var ld = LiveData()
+            
+            ld.id = tmp.id
+            ld.player = tmp.player
+            ld.number = tmp.number
+            ld.isOnCourt = tmp.isOnCourt
+            ld.isOnCourt_backup = tmp.isOnCourt
+
+            result.append(ld)
+        }
+        print("liveDatasWithPlaying")
+        
+        var onCourt = result.filter { ld1 in
+            return ld1.isOnCourt
+        }
+        
+        onCourt.sort { ld1, ld2 in
+            return ld1.player! < ld2.player!
+        }
+        
+        var offCourt = result.filter { ld1 in
+            return !(ld1.isOnCourt)
+        }
+
+        offCourt.sort { ld1, ld2 in
+            return ld1.player! < ld2.player!
+        }
+        
+        return onCourt + offCourt
     }
     
     // 当前比赛的小节是否在选中的多个高亮中
@@ -212,8 +298,8 @@ class MyTeamInfo {
             }
         }
         */
-        for pInfo in self.periodInfos! {
-            pInfo.liveDatas?.sort { (s1, s2) -> Bool in
+        for pInfo in self.periodInfos {
+            pInfo.liveDatas.sort { (s1, s2) -> Bool in
                    let tmp = s1.id < s2.id
                    
                    return tmp
@@ -240,8 +326,8 @@ class MyTeamInfo {
     func setOnCourt(current: Int, next: Int) {
         var result = [LiveData]()
         
-        for tmp in self.periodInfos![current].liveDatas! {
-            let ld = LiveData()
+        for tmp in self.periodInfos[current].liveDatas {
+            var ld = LiveData()
             
             ld.id = tmp.id
             ld.player = tmp.player
@@ -251,7 +337,7 @@ class MyTeamInfo {
             result.append(ld)
         }
         
-        self.periodInfos![next].liveDatas = result
+        self.periodInfos[next].liveDatas = result
     }
     
     func toStringOfCsv() -> String? {
@@ -272,7 +358,7 @@ class MyTeamInfo {
         
         str += "\n"
         // 实际数据
-        for (index, pInfo) in periodInfos!.enumerated() {
+        for (index, pInfo) in periodInfos.enumerated() {
             if pInfo.status == .NotStart {
                 break
             }
@@ -280,8 +366,8 @@ class MyTeamInfo {
                 str += csv
                 
                 // 最后一个没有换行符"\n"
-                if index < periodInfos!.count - 1 {
-                    if periodInfos![index + 1].status == .NotStart {
+                if index < periodInfos.count - 1 {
+                    if periodInfos[index + 1].status == .NotStart {
                         //
                     } else {
                         str += "\n"
@@ -295,16 +381,16 @@ class MyTeamInfo {
 }
 
 /// 小节信息
-class PeriodInfo {
+class PeriodInfo: ObservableObject {
     var name = "P1"
     // 比赛数据
-    var liveDatas: [LiveData]?
+    @Published var liveDatas = [LiveData]()
     
     // 小节得分
     var score: Int {
         var total = 0
         if liveDatas != nil {
-            for ld in liveDatas! {
+            for ld in liveDatas {
                 total += ld.points_cal // 得分u
             }
         }
@@ -326,12 +412,12 @@ class PeriodInfo {
         }
         
         var str = ""
-        for (index, ld) in self.liveDatas!.enumerated() {
+        for (index, ld) in self.liveDatas.enumerated() {
             str += name + ","
             if let csv = ld.toStringOfCSV() {
                 str += csv
                 
-                if index < self.liveDatas!.count - 1 {
+                if index < self.liveDatas.count - 1 {
                     str += "\n"
                 }
             }
@@ -360,4 +446,4 @@ class OpponentTeamInfo {
         return total
     }
 }
-*/
+

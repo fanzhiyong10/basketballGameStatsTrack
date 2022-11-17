@@ -241,6 +241,9 @@ struct LiveData {
     var tos_count: Int = 0
     
     var isOnCourt = false
+    
+    // 辅助
+    var isOnCourt_backup = false
 
     static func createTestData() -> LiveData {
         var id = 1

@@ -11,11 +11,15 @@ import SwiftUI
 ///
 ///表格形式
 ///- header
-///- row
-///- footer
+///- row：仅场上队员
+///- footer：统计：所有队员
 struct OnCourtPlayerLiveDataTable: View {
     // State，设定为private。用于父子之间的视图，父亲为State，儿子为Binding
-    @State private var liveDatas = LiveData.createDataOnCourt()
+//    @State private var liveDatas = LiveData.createDataOnCourt()
+
+    //MARK: -  队员的实时比赛数据 1）必须确保传入，2）数据可以修改，3）队员的实时比赛数据的变化，会引起统计数据的变化。
+    //@Binding 队员的实时比赛数据，统计数据：计算获取
+    @Binding var liveDatas : [LiveData]
     
     var body: some View {
         // 列表：竖向
@@ -23,33 +27,30 @@ struct OnCourtPlayerLiveDataTable: View {
             List {
                 Section {
                     ForEach(0...liveDatas.count-1, id:\.self) { index in
-                        PlayerLiveDataRow(liveData: $liveDatas[index], height: 120)
-                            .frame(height: 120) // 行高
-                            .listRowSeparator(.hidden) // 行分割线：隐藏
-                            .background { // 行背景色
-                                if index % 2 == 0 {
-                                    Color.gray.opacity(0.3)
-                                } else {
-                                    Color.gray.opacity(0.1)
+                        // 仅场上队员
+                        if liveDatas[index].isOnCourt == true {
+                            PlayerLiveDataRow(liveData: $liveDatas[index], height: 120)
+                                .frame(height: 120) // 行高
+//                                .listRowSeparator(.hidden) // 行分割线：隐藏
+                                .background { // 行背景色
+                                    if index % 2 == 0 {
+                                        Color.gray.opacity(0.3)
+                                    } else {
+                                        Color.gray.opacity(0.1)
+                                    }
                                 }
-                            }
-//                            .listRowInsets(EdgeInsets()) // 左侧不留空间
+                        }
+                        
                     }
                 } header: { // 表头
                     PlayerLiveDataHeader(height: 60) // 40
                         
                 } footer: { // 表尾
-                    PlayerLiveDataFooter(liveData: LiveData.createTestData(), height: 120)
+                    PlayerLiveDataFooter(liveData: processTotalData(liveDatas: liveDatas), height: 120) //processTotalData(liveDatas: liveDatas)
                 }
                 // 行定位1/2：位置，需要设定2处，左侧预留空间8
                 .listRowInsets(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 0)) // leading 8
 
-            }
-            .overlay(alignment: .bottomLeading) {
-                // 底部统计
-//                PlayerLiveDataFooter(liveData: LiveData.createTestData(), height: 100)
-//                    .padding(.leading, 8.0)
-                    
             }
             // 配合行定位2/2：位置，需要设定2处
             .listStyle(PlainListStyle())
@@ -59,6 +60,6 @@ struct OnCourtPlayerLiveDataTable: View {
 
 struct OnCourtPlayerLiveDataTable_Previews: PreviewProvider {
     static var previews: some View {
-        OnCourtPlayerLiveDataTable()
+        OnCourtPlayerLiveDataTable(liveDatas: .constant(LiveData.createData()))
     }
 }

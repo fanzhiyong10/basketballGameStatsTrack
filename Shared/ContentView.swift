@@ -20,11 +20,17 @@ struct ContentView: View {
     private var items: FetchedResults<Item>
     
     //MARK: - 左侧菜单
-    private var items_menu: [String] = ["Players", "New Game", "Share", "Voice Training"]
+    private var items_menu: [String] = ["New Game", "Share", "Voice Training", "Team Info"]
     
     //MARK: - 全局环境变量 状态控制，声明
     @EnvironmentObject var mainStates: MainStateControl
     
+    //MARK: -  我队的比赛数据 1.必须确保生成
+    @EnvironmentObject var myTeamInfo: MyTeamInfo
+
+    //MARK: -  队员的实时比赛数据，声明时要初始化
+    @State private var liveDatas : [LiveData] = LiveData.createData() // 所有队员
+
     var body: some View {
         NavigationView {
             List {
@@ -32,19 +38,33 @@ struct ContentView: View {
                     NavigationLink {
                         switch index {
                         case 0 :
-                            Text("Item at \(items_menu[index])")
+                            // 主页面
+                            MainTracker(liveDatas: $liveDatas)
                             
                         case 1 :
                             // 主页面
-                            MainTracker()
+                            MainTracker(liveDatas: $liveDatas)
                             
                         default :
                             // 主页面
-                            MainTracker()
+                            MainTracker(liveDatas: $liveDatas)
                         }
                         
                     } label: {
                         Text(items_menu[index])
+                            .onTapGesture {
+                                if index == 0 {
+                                    // 计算：使用那一组数据
+                                    // 新比赛
+                                    myTeamInfo.newGameOfMyTeamInfos()
+                                    liveDatas = myTeamInfo.liveDatasWithPlaying // 所有队员
+                                    myTeamInfo.periodInfos[0].liveDatas = liveDatas
+                                    print("Players")
+                                    
+                                    // 计时器
+                                    mainStates.game_cum_duration = 0
+                                }
+                            }
                     }
                 }
             }
@@ -52,9 +72,13 @@ struct ContentView: View {
             
             
             VStack {
-                MainTracker()
+                MainTracker(liveDatas: $liveDatas)
             }
         }
+    }
+    
+    private func newGame() {
+        myTeamInfo.newGameOfMyTeamInfos()
     }
 
     private func addItem() {
@@ -100,6 +124,7 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
             .environmentObject(MainStateControl())
+            .environmentObject(MyTeamInfo())
             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext).previewInterfaceOrientation(.landscapeLeft)
     }
 }
